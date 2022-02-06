@@ -1,0 +1,35 @@
+<row>
+    <column span="3" class="description">
+        How are your <div class="highlight-colored">customers feeling</div> today?
+    </column>
+
+    <column span="1" class="mood">
+        <inner>
+            <div class="smile"></div>
+        </inner>
+    </column>
+
+    <column span="3" class="metric total-feedback">
+        <inner>
+            <metric>{{data.total}}</metric>
+            <i class="fa fa-comments"></i>
+            <h2>Total Feedback</h2>
+        </inner>
+    </column>
+
+    <column span="3" class="metric average">
+        <inner>
+            <metric>{{data.average | mk.Number:1}}</metric>
+            <i class="fa fa-star-half"></i>
+            <h2>Average Rating</h2>
+        </inner>
+    </column>
+
+    <column span="3" class="metric negative">
+        <inner>
+            <metric>{{data.negative}}</metric>
+            <i class="fa fa-thumbs-down"></i>
+            <h2>Negative</h2>
+        </inner>
+    </column>
+</row>

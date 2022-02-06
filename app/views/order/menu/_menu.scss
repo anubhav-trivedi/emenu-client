@@ -1,0 +1,17 @@
+@import "mixins";
+
+.mk-order-menu {
+
+
+
+  .nav-pills {
+    margin-bottom: -1rem;
+  }
+
+ .category-button {
+   margin-right: 1rem;
+   margin-bottom: 1rem;
+   min-width: 140px;
+   font-size:1.2em;
+ }
+}

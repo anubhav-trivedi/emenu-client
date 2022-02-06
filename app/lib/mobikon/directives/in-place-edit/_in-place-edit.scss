@@ -1,0 +1,17 @@
+mk-in-place-edit {
+  .edit-options {
+    button {
+      margin-right: 0.5em;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .add-icon {
+    @include fa-icon('plus-circle');
+  }
+  .minus-icon {
+    @include fa-icon('minus-circle');
+  }
+}

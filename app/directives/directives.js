@@ -1,0 +1,1 @@
+angular.module('yoMenu.Directives', ['yoMenu.Services']);

@@ -1,0 +1,116 @@
+<mk-header>
+    <left></left>
+</mk-header>
+<div class="row" ng-class="{'done-tapped': doneTapped}">
+    <div class="col-xs-6 text-center">
+        <div class="img-container">
+            <div class="img-inner-container">
+                <img class="item-image" ng-src="{{item.Image}}" mk-error-src="assets/images/defaultItem.png" />
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <h4>{{item.Name}}</h4>
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="description">{{item.Description}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h4>Unit Price</h4>
+                    </div>
+                    <div ng-if="item.Unit=='sqft'"  class="col-xs-6 input-group">
+                        <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                        <input id="item-price" placeholder="Required" class="form-control" min="0" type="number" ng-model="orderItem.UnitPrice" />
+                    </div>
+                    <div ng-if="!item.Unit || item.unit=='seat' || item.unit=='table'" class="col-xs-6">
+                        <h4>{{item.Price | currency}}</h4>
+                    </div>
+                </div>
+                <div ng-if="!item.Unit  || item.unit=='seat' || item.unit=='table'" class="row item-buttons">
+                    <div class="col-xs-6">
+                        <h4>Quantity</h4>
+                    </div>
+                    <div class="col-xs-2">
+                        <h4>{{orderItem.Quantity}}</h4>
+                    </div>
+                    <div class="col-xs-2">
+                        <a ng-click="add()"><i class="fa fa-plus-circle"></i></a>
+                    </div>
+                    <div class="col-xs-2">
+                        <a ng-click="remove()"><i class="fa fa-minus-circle"></i></a>
+                    </div>
+                </div>
+                <div ng-if="item.Unit=='seat' || item.Unit=='table'" class="row">
+                    <div class="col-xs-6">
+                        <h4>Body Color</h4>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="orderItem.Custom.bodyColor" />
+                    </div>
+                </div>
+                <div ng-if="item.Unit=='seat'" class="row">
+                    <div class="col-xs-6">
+                        <h4>Cushion Color</h4>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="orderItem.Custom.cushionColor" />
+                    </div>
+                </div>
+                <div ng-if="item.Unit=='table'" class="row">
+                    <div class="col-xs-6">
+                        <h4>Tempered Grass</h4>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="orderItem.Custom.temperedGrass" />
+                    </div>
+                </div>
+                <div class="row size-row" ng-if="item.Unit=='sqft'">
+                    <div class="col-xs-6">
+                        <h4>Size (in sq.ft)</h4>
+                    </div>
+                    <div class="col-xs-4">
+                        <input ng-model="orderItem.Quantity" class="form-control" min="0" placeholder="Required" type="number" />
+                    </div>
+                    <div class="col-xs-2">
+                        <a ng-click="clear()"><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </div>
+                <div class="row size-row" ng-if="item.Unit=='sqft'">
+                    <div class="col-xs-6">
+                        <h4>Color</h4>
+                    </div>
+                    <div class="col-xs-4">
+                        <input class="form-control" min="0" type="text" ng-model="orderItem.Custom.color"/>
+                    </div>
+                </div>
+                <div class="row size-row" ng-if="item.Unit=='sqft'">
+                    <div class="col-xs-6">
+                        <h4>Minimum Order Amount</h4>
+                    </div>
+                    <div  class="col-xs-4 input-group">
+                        <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                        <input ng-model="orderItem.Custom.minOrderAmount" min="0" class="form-control" type="number" />
+                    </div>
+                    <div class="warning col-xs-4" ng-if="orderItem.Custom.minOrderAmount && orderItem.Custom.minOrderAmount < orderItem.UnitPrice * orderItem.Quantity">Total Price is greater than Minimum Order Amount</span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 item-detail">
+                        <h4> Total:  {{orderItem.TotalPrice | currency}}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span class="done-cover" ng-click="reqClass()">
+                            <input class="btn btn-primary btn-lg" type="button" ng-disabled="!doneEnabled" value="Done" ng-click="done();" />
+                        </span>
+                        <input class="btn btn-danger btn-lg" type="button" value="Cancel" ng-click="cancel();" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

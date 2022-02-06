@@ -1,0 +1,177 @@
+<div class="mk-order-order-list" ng-controller="OrderListCtrl">
+    <div class="row">
+        <div class="col-xs-3">
+            <h4>Item</h4>
+        </div>
+        <div class="col-xs-1">
+            <h4>Color</h4>
+        </div>
+        <div class="col-xs-2">
+            <h4>Quantity</h4>
+        </div>
+        <div class="col-xs-2">
+            <h4>Unit Price</h4>
+        </div>
+        <div class="col-xs-3">
+            <h4>Total/Minimum Order Amount</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul>
+                <li ng-repeat="orderItem in order.OrderItems | filter:filterOnMenuTypeId(config.mainMenuTypeId)">
+                    <div  ng-class="{even: $even, odd: $odd}" class="row">
+                        <div class="col-xs-3">
+                            <p class="item-name">{{orderItem.Item.Name}}</p>
+                            <p ng-if="orderItem.Custom.bodyColor">Body Color-{{orderItem.Custom.bodyColor}}</p>
+                            <p ng-if="orderItem.Custom.cushionColor">Cushion Color-{{orderItem.Custom.cushionColor}}</p>
+                            <p ng-if="orderItem.Custom.temperedGrass">Tempered Grass-{{orderItem.Custom.temperedGrass}}</p>
+                        </div>
+                        <div class="col-xs-1" ng-if="orderItem.Custom.color">
+                            {{orderItem.Custom.color}}
+                        </div>
+                        <div class="col-xs-1 no-color" ng-if="!orderItem.Custom.color">
+                            -
+                        </div>
+                        <div class="col-xs-2">
+                            {{orderItem.Quantity}} {{orderItem.Item.Unit}}
+                        </div>
+                        <div class="col-xs-2">
+                            <span ng-if="orderItem.UnitPrice != null">{{orderItem.UnitPrice | currency}}</span>
+                        </div>
+                        <div class="col-xs-3">
+                            {{orderItem.TotalPrice | currency}}
+                        </div>
+                        <div class="col-xs-1">
+                            <a ng-click="orderItem.entityAspect.setDeleted();"><i class="fa fa-trash-o"></i></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div ng-show="showAddOn" class="row">
+        <div class="col-xs-12">
+            <h4>Add On</h4>
+        </div>
+    </div>
+    <div ng-show="showAddOn" class="row">
+        <div class="col-xs-12">
+            <ul>
+                <li ng-repeat="orderItem in order.OrderItems | filter:filterOnMenuTypeIdAndCategory(config.addOnMenuTypeId,'Add On')">
+                    <div ng-class="{even: $even, odd: $odd}" class="row">
+                        <div class="col-xs-8">
+                            <div>{{orderItem.Item.Name}}</div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div>{{orderItem.TotalPrice | currency}}</div>
+                        </div>
+                        <div class="col-xs-1">
+                            <a ng-click="orderItem.entityAspect.setDeleted();"><i class="fa fa-trash-o"></i></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div ng-show="showOrderTerm"  class="row">
+        <div class="col-xs-12">
+            <h4>Order Terms and Conditions</h4>
+        </div>
+    </div>
+    <div ng-show="showOrderTerm"  class="row">
+        <div class="col-xs-12">
+            <ul>
+                <li ng-repeat="orderItem in order.OrderItems | filter:filterOnMenuTypeIdAndCategory(config.addOnMenuTypeId,'Order Terms and Conditions')">
+                    <div ng-class="{even: $even, odd: $odd}" class="row">
+                        <div class="col-xs-11">
+                            <div>{{orderItem.Item.Name}}</div>
+                        </div>
+                        <div class="col-xs-1">
+                            <a ng-click="orderItem.entityAspect.setDeleted();"><i class="fa fa-trash-o"></i></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <b>Remarks:  {{order.Remarks}}</b>
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-6"></div>
+        <div class="col-xs-3">
+            <div ng-if="order.Loyalty"><b>Loyalty Opted</b></div>
+        </div>
+        <div class="col-xs-3">
+            <div ng-if="order.Loyalty"><b>{{order.Loyalty}}</b></div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-xs-offset-6 col-xs-3">
+            <b>Order Amount</b>
+        </div>
+        <div class="col-xs-3">
+            <b>{{order.getTotalWithOutTax() | currency}}</b>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6"></div>
+        <div class="col-xs-3">
+            <b>Minimum Order Amount</b>
+        </div>
+        <div class="col-xs-3">
+            <div  class="input-group">
+                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                <input class="form-control amount-paid" type="number" min='0' ng-model="order.BillAmount" z-validate />
+            </div>
+            <span class="warning" ng-if="order.Discount && order.BillAmount">Cannot give Discount and enter Minimum Order Amount at the same time in an order, please use only one</span>
+            <span class="warning" ng-if="!order.Discount && order.BillAmount && order.BillAmount < order.getTotalWithOutTax()">Order amount is greater than Minimum Order Amount</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6"></div>
+        <div class="col-xs-3">
+            <div ng-if="order.Discount"><b>Discount</b></div>
+        </div>
+        <div class="col-xs-3">
+            <div ng-if="order.Discount"><b>- {{order.Discount | currency}}</b></div>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-xs-6"></div>
+        <div class="col-xs-3">
+            <div ng-if="order.Discount"><b>Amount After Discount</b></div>
+        </div>
+        <div class="col-xs-3">
+            <div ng-if="order.Discount"><b>{{order.getTotalWithOutTax() - order.Discount | currency}}</b></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6"></div>
+        <div class="col-xs-3">
+            <b>Add GST</b>
+        </div>
+        <div class="col-xs-3">
+            <b>{{order.getTax() | currency}}</b>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6"></div>
+        <div class="col-xs-3">
+            <b>Total Amount</b>
+        </div>
+        <div class="col-xs-3">
+            <b>{{order.getTotal() | currency}}</b>
+        </div>
+    </div>
+
+</div>

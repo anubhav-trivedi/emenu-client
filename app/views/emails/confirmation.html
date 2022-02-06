@@ -1,0 +1,366 @@
+<html ng-app="yoMenuApp">
+<div style="width:700px" ng-controller="OrderListCtrl">
+    <div>
+        <table width="100%" border="0">
+            <tr>
+                <td style="color: #0000ff">
+                    <h3><b>EVORICH MANUFACTURING PTE LTD</b></h3>
+                </td>
+            <tr>
+            <tr>
+                <td style="background-color: #0000ff;color: #DDDDDD; font-size: 0.8em">
+                    Laminate Wood Floors/Solid Wood Floors/EVORICH HERF High End Resilient Floors (Waterproof)/<br />
+                    WPC Deckings/ Engineered Wood Floors/ Vinyl/Carpet/*25years warranty Accoya Pine Wood Decking
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td style="width:50%;color: #0000ff; font-size: 0.8em">
+                    GST.Reg.no: 200721632D<br />
+                    <b>EVORICH Flooring Hub/Office:</b><br />
+                    21 Kim Chuan Terrace (S) 537042<br />
+                    Tel: 6 3487333 Fax: 6 3429331/68755721<br />
+                    Be convinced @ www.evorich.com.sg / www.tarkett.com / www.parador.de
+                </td>
+                <td style="font-size: 2em; font-style:italic">
+                    JOB CONFIRMATION
+                </td>
+            </tr>
+            </td>
+            </tr>
+
+        </table>
+    </div>
+    <div style="border: 3px solid #000000">
+        <table width="100%">
+            <tr>
+                <td width="50%" rowspan="7">
+                    <b>To: </b>{{order.Customer.Name}} <br />
+                    <span ng-show="!order.Customer.CompanyName"><b>IC No.: </b>{{order.Customer.UniqueId}}</span> <br />
+                    <b>Email: </b>{{order.Customer.Email}}<br />
+                    <b>Mobile: </b>{{order.Customer.CellNumber}}<br />
+                    <div>
+                        <b>Invoice Address: </b>{{order.Customer.Address}} <br />
+                        {{order.Customer.City}} <br />
+                        {{order.Customer.Zip}}
+                    </div>
+                    <div ng-if="order.DeliveryAddress.StreetLine1">
+                        <b>Delivery Address:</b> {{order.DeliveryAddress.StreetLine1}} <br />
+                        {{order.DeliveryAddress.City}} <br />
+                        {{order.DeliveryAddress.PostCode}}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="25%">
+                    <b>Order Number</b>
+                </td>
+                <td width="25%">
+                    : {{order.OrderNo}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Date </b>
+                </td>
+                <td>
+                    : {{order.Date  | date:'yyyy-MM-dd'}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Sales Representative</b>
+                </td>
+                <td>
+                    : {{order.Server.Name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Contact Number</b></td>
+                <td>
+                    : {{order.Server.CellNumber}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Delivery / Installation Date and time</b>
+                </td>
+                <td>
+                    : {{order.PickupDate | date:'MM/dd/yyyy HH:mm'}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Payment Mode</b>
+                </td>
+                <td>
+                    : {{order.PaymentMethod}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin:5px;font-size:1em">
+        <p>Dear Sir/Madam,<br />
+        We thank you very much for your support and as per your request, we are please to forward our job confirmation as follows.  </p>
+        <p>To supply & install the following on prepared floor surface complete with material wastage :</p>
+    </div>
+
+    <div style="border: 3px solid #000000">
+        <table width="100%">
+            <tr>
+                <td align="left">
+                    <b>Item</b>
+                </td>
+                <td align="center">
+                    <b>Color</b>
+                </td>
+                <td align="center">
+                	<b>Quantity</b>
+                </td>
+                <td align="center">
+					<b>Unit Price</b>
+                </td>
+                <td align="right">
+                    <b>Total/<br />Minimum Order Amount</b>
+                </td>
+            </tr>
+            <tr ng-repeat="items in order.OrderItems | filter: filterOnMenuTypeId(config.mainMenuTypeId)">
+                <td align="left">{{items.Item.Name}}
+               </td>
+                <td align="center">
+                    {{items.Custom | filterColor}}
+                </td>
+                <td align="center">
+                    {{items.Quantity}} {{items.Item.Unit}}
+              </td>
+                <td align="center">
+                    <span ng-if="items.UnitPrice">{{items.UnitPrice | currency}}</span>
+              </td>
+                <td align="right">
+                    {{items.TotalPrice | currency}}
+              </td>
+            </tr>
+            <tr>
+              <td><b>Add Ons</b></td></tr>
+            <tr ng-repeat="items in order.OrderItems | filter: filterOnMenuTypeIdAndCategory(config.addOnMenuTypeId,'Add On')">
+                <td>
+                    {{items.Item.Name}}
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td align="right">
+                    {{items.TotalPrice | currency}}
+              </td>
+            </tr>
+        </table>
+        <hr>
+
+        <table width="100%">
+            <tr>
+                <td width="50%"></td>
+                <td width="30%">
+                    <b>Order Amount: </b>
+                </td>
+                <td width="20%" align="right">
+                    <span>
+                        {{order.getTotalWithOutTax() | currency}}
+                    </span>
+                </td>
+            </tr>
+            <tr  ng-if="order.getMinimum()">
+                <td width="50%"></td>
+                <td width="30%">
+                    <b>Minimum Order Amount: </b>
+                </td>
+                <td width="20%" align="right">
+                    {{order.getMinimum() | currency}}
+                </td>
+            </tr>
+            <tr  ng-if="order.Discount">
+                <td width="50%"></td>
+                <td width="30%">
+                    <b>Discount: </b>
+                </td>
+                <td width="20%" align="right">
+                    - {{order.Discount | currency}}
+                </td>
+            </tr>
+                        <tr  ng-if="order.Discount">
+                <td width="50%"></td>
+                <td width="30%">
+                    <b>Amount After Discount: </b>
+                </td>
+                <td width="20%" align="right">
+ 						{{order.getTotalWithOutTax() - order.Discount | currency}}
+                </td>
+            </tr>
+            <tr>
+                <td width="50%"></td>
+                <td width="30%">
+                    <b>Add GST: </b>
+                </td>
+                <td width="20%" align="right">
+                    {{order.getTax() | currency}}
+                </td>
+            </tr>
+                        <tr>
+                <td width="50%"></td>
+                <td width="30%">
+                    <b>Total Amount:</b>
+                </td>
+                <td width="20%" align="right">
+                    {{order.getTotal() | currency}}
+                </td>
+            </tr>
+            <tr ng-if="order.AmountPaid">
+                <td width="50%"></td>
+                <td width="30%">
+                    <b>Deposit: </b>
+                </td>
+                <td width="20%" align="right">
+                    {{order.AmountPaid | currency}}
+                </td>
+            </tr>
+            <tr>
+                <td width="50%"></td>
+                <td width="30%">
+                    <b>Balance Due: </b>
+                </td>
+                <td width="20%" align="right">
+                        {{order.getTotal() - order.AmountPaid | currency}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <b style="text-decoration: underline">Remarks:  {{order.Remarks}}
+               </b> </td>
+            </tr>
+        </table>
+    </div>
+    <div style="border: 3px solid #000000">
+        <table width="100%">
+
+                      <tr>
+                <td >
+                    <b style="text-decoration: underline">Payment Mode:
+
+               </b> </td>
+            </tr>
+                                  <tr>
+                <td ><p><strong>(1) Cheque</strong></p></td>
+            </tr>
+                        </tr>
+                                  <tr>
+                <td ><p>Cheque should be crossed and payment should be made to <u>Evorich Manufacturing Pte Ltd</u>. </p></td>
+            </tr>
+                                              <tr>
+                <td ><p><strong>(2) Bank Transfer</strong></p></td>
+            </tr>
+                        </tr>
+                                  <tr>
+                <td ><p>Payment should be transferred to the following account:</p>
+                  <p>UOB Current Account: 3543021952</p>
+                  <p>After transfer is made, the Payer is required to send a notification by SMS to 94377556 or email to alexaw@evorich.com.sg with the following information: </p>
+                  <p>(a) Name of the Salesperson <br>
+                    (b) The cash amount paid.<br>
+                    (c) Jobsite address</p></td>
+            </tr>
+                                              <tr>
+                <td ><p><strong>(3) Cash Payment</strong></p></td>
+            </tr>
+                        </tr>
+                                  <tr>
+                <td ><p>For payment by cash, Payer is required to send a SMS notification to 94377556 with the following information immediately:</p>
+                  <p>(a) Name of the Salesperson <br>
+                    (b) The cash amount paid.<br>
+                    (c) Jobsite address</p></td>
+            </tr>
+
+
+        </table>
+    </div>
+  <div style="border: 3px solid #000000">
+        <table width="100%">
+
+                      <tr>
+                <td >
+                    <b style="text-decoration: underline">Order Terms and Conditions:
+
+               </b> </td>
+            </tr>
+            <tr ng-repeat="items in order.OrderItems | filter: filterOnMenuTypeIdAndCategory(config.addOnMenuTypeId,'Order Terms and Conditions')">
+                <td>
+                    {{items.Item.Name}}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+        <ul style=" border: 3px solid #000000;font-size: 0.8em; padding: 1em 1em 1em 3em" type="circle">
+            <b>General Terms and Conditions</b><br />
+          <li>This quotation or price quoted is valid for 60 days as of the date of this quotation.</li>
+
+            <li> The above mentioned price includes installation of floorboards, skirtings and accessories on prepared smooth levelled floor. The installed job remains the
+                property of *EVORICH until full settlement of payment.</li>
+
+            <li> The above is subject to 7% GST.</li>
+
+            <li> The client hereby grants *EVORICH irrevocable licence permission to re-enter the Client's premises for the purpose of taking repossession as herein if the
+                Client rejects or fails to pay the agreed purchased price. On top of that, late payment will be levied with a 12% per annum interest.</li>
+
+            <li> As EVORICH MANUFACTURING PTE LTD is associated with DP SME Credit Bureau, please note that any over due payment/s will be listed in DP SME Credit Bureau's records and this record may be assessed by
+                financial institutions and other approving credit companies. * All installation carried out by Evorich is in compliance to industry practices and this shall override all consumers individual requests.</li>
+
+            <li> All areas of warranty will be void for payment not fulfilled within 7 days after installation.
+
+            <li> Customers understand & accept that all wood products will have colour & tone variations as well as cracklines whether obvious or hairline.</li>
+
+            <li> If order is Cancelled, 80% of the contract sum still appliers.</li>
+
+            <li> 40% of contract sum applies for the change of colours plus a delivery charge of $100.</li>
+
+            <li> Evorich reserves the right to replace goods of equivalence in the event of unforeseen circumstances.</li>
+
+            <li> All customers cannot claims EVORICH for * any defects* at the installation site unless customer can show evidence of pictures taken before any work
+                commencement at the said site and there must not be any other 2nd party present during the installation.</li>
+
+            <li> Any claim or unacceptance must be notified by SMS IMMEDIATELY to respective salesperson and with written notice to Biz@EVORICH.com.sg with picture taken within 5 days upon job completion or it
+                shall deemed to be accepted and shall override the "Lemon Law".</li>
+
+            <li> EVORICH shall extend goods of equivalence based on EVORICH discretion in the event of circumstantial reason.</li>
+
+            <li>*Evorich herewith refers to Evorich Holdings Pte Ltd / Evorich Manufacturing Pte Ltd.</li>
+        </ul>
+    <div>
+        <div style="margin:5px;font-size:1em">Thank you and look forward to be of service to you.</div>
+
+      <table>
+            <tr>
+                <td style="width:40%; padding-bottom: 40px; font-size: 0.8em">
+                    <b>
+                        Thank You,<br />
+                        Yours faithfully,<br />
+                        For EVORICH MANUFACTURING PTE LTD<br />
+                    </b>
+                </td>
+                <td>
+                    <b>The above agreed & accepted by,</b>
+                    <div>
+                        <img src="{{signaturePath}}" width="200px" height="100px">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:40%; font-size: 0.8em">
+                    <b>{{order.Server.Name}}</b><br /></td>
+                <td style="border-top: 3px solid #000000; font-size: 0.8em">
+                    <b>Signature, Company Chop & IC Number</b>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</html>

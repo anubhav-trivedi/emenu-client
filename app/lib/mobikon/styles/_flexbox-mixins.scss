@@ -1,0 +1,109 @@
+/**
+ * Cross-browser support for the flexible boxes syntax.
+ * http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ */
+
+// Turn on/off support for different vendors.
+$default-enable-webkit: false  !default;
+$default-enable-moz:    true  !default;
+$default-enable-ms:     false !default;
+$default-enable-o:      false !default;
+
+/**
+ * Defines an element as a flex container and its children as flex items.
+ * Applies to the parent flex container element.
+ * @param $type: flex (makes a block-level element) | inline-flex (makes an inline-level element)
+ */
+@mixin flex-display($type: flex, $webkit: $default-enable-webkit, $moz: $default-enable-moz, $ms: $default-enable-ms, $o: $default-enable-o) {
+  @if $webkit { display: -webkit- + $type; }
+  @if    $moz { display:    -moz- + $type; }
+  @if     $ms { display:     -ms- + $type; }
+  @if      $o { display:      -o- + $type; }
+                display:            $type;
+}
+
+/**
+ * Shorthand for flex-direction and flex-wrap properties.
+ * Defines the main and cross axes of the flex items in the flex container.
+ * Applies to the parent flex container element.
+ * @param $direction: row | row-reverse | column | column-reverse
+ * @param $wrap: nowrap | wrap | wrap-reverse
+ */
+@mixin flex-flow($direction: row, $wrap: nowrap, $webkit: $default-enable-webkit, $moz: $default-enable-moz, $ms: $default-enable-ms, $o: $default-enable-o) {
+  @if $webkit { -webkit-flex-direction: $direction; }
+  @if    $moz {    -moz-flex-direction: $direction; }
+  @if     $ms {     -ms-flex-direction: $direction; }
+  @if      $o {      -o-flex-direction: $direction; }
+                        flex-direction: $direction;
+
+  @if $webkit { -webkit-flex-wrap: $direction; }
+  @if    $moz {    -moz-flex-wrap: $direction; }
+  @if     $ms {     -ms-flex-wrap: $direction; }
+  @if      $o {      -o-flex-wrap: $direction; }
+                        flex-wrap: $direction;
+}
+
+/**
+ * Aligns flex items along the main axis of the flex container.
+ * Applies to the parent flex container element.
+ * @param $alignment: flex-start | flex-end | center | space-between | space-around
+ */
+@mixin flex-justify-content($alignment: flex-start, $webkit: $default-enable-webkit, $moz: $default-enable-moz, $ms: $default-enable-ms, $o: $default-enable-o) {
+  @if $webkit { -webkit-justify-content: $alignment; }
+  @if    $moz {    -moz-justify-content: $alignment; }
+  @if     $ms {     -ms-justify-content: $alignment; }
+  @if      $o {      -o-justify-content: $alignment; }
+                        justify-content: $alignment;
+}
+
+/**
+ * Defines how flex items are laid out along the cross axis of the flex container.
+ * Applies to the parent flex container element.
+ * @param $alignment: flex-start | flex-end | center | baseline | stretch
+ */
+@mixin flex-align-items($alignment: stretch, $webkit: $default-enable-webkit, $moz: $default-enable-moz, $ms: $default-enable-ms, $o: $default-enable-o) {
+  @if $webkit { -webkit-align-items: $alignment; }
+  @if    $moz {    -moz-align-items: $alignment; }
+  @if     $ms {     -ms-align-items: $alignment; }
+  @if      $o {      -o-align-items: $alignment; }
+                        align-items: $alignment;
+}
+
+/**
+ * Defines how multiple lines are laid out along the cross axis (when there is extra space).
+ * Applies to the parent flex container element.
+ * @param $alignment: flex-start | flex-end | center | space-between | space-around | stretch
+ */
+@mixin flex-align-content($alignment: stretch, $webkit: $default-enable-webkit, $moz: $default-enable-moz, $ms: $default-enable-ms, $o: $default-enable-o) {
+  @if $webkit { -webkit-align-content: $alignment; }
+  @if    $moz {    -moz-align-content: $alignment; }
+  @if     $ms {     -ms-align-content: $alignment; }
+  @if      $o {      -o-align-content: $alignment; }
+                        align-content: $alignment;
+}
+
+/**
+ * Specifies the alignment for individual flex items (overrides align-items).
+ * Applies to the child element (flex item).
+ * @param $alignment: auto | flex-start | flex-end | center | baseline | stretch
+ */
+@mixin flex-align-self($alignment: auto, $webkit: $default-enable-webkit, $moz: $default-enable-moz, $ms: $default-enable-ms, $o: $default-enable-o) {
+  @if $webkit { -webkit-align-self: $alignment; }
+  @if    $moz {    -moz-align-self: $alignment; }
+  @if     $ms {     -ms-align-self: $alignment; }
+  @if      $o {      -o-align-self: $alignment; }
+  align-self: $alignment;
+}
+
+/**
+ * Specifies the growth factor of a flex item relative to other flex items in the flex container.
+ * Applies to the child element (flex item).
+ * @param $factor: non-negative integer
+ */
+@mixin flex-grow($factor: 0, $webkit: $default-enable-webkit, $moz: $default-enable-moz, $ms: $default-enable-ms, $o: $default-enable-o) {
+  @if $webkit { -webkit-flex-grow: $factor; }
+  @if    $moz {    -moz-flex-grow: $factor; }
+  @if     $ms {     -ms-flex-grow: $factor; }
+  @if      $o {      -o-flex-grow: $factor; }
+  flex-grow: $factor;
+}

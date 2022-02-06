@@ -1,0 +1,30 @@
+<div class="row">
+    <div ng-if="!currentType">
+        <div class="col-xs-8">
+            <div class="form-control value">{{value | mkDynamic:filter}}</div>
+        </div>
+
+        <div class="col-xs-4 edit-options" ng-if="editTypes.length > 0">
+            <div class="edit-types" ng-if="!currentType">
+                <button ng-repeat="editType in editTypes" ng-click="edit(editType)" class="btn btn-primary">
+                    <i class="{{editType.type}}-icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <form ng-if="currentType" ng-submit="submit()">
+        <div class="col-xs-8">
+            <div class="input-group">
+                <input class="form-control" ng-model="input.value" ng-blur="inputBlur()" type="{{editType.options.inputType || 'text'}}">
+                <span class="input-group-addon"><i class="{{currentType}}-icon"></i></span>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
+            <button type="reset" class="btn btn-danger"><i class="fa fa-times"></i></button>
+        </div>
+    </form>
+
+
+</div>

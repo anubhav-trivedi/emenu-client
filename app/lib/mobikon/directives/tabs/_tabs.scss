@@ -1,0 +1,31 @@
+mk-tabs {
+
+  .tab-headers {
+    .tab-header {
+      display: inline-block;
+      height: 4rem;
+      line-height: 4rem;
+      margin-right: 0.1rem;
+      background-color: #2f455f;
+      color: white;
+      text-align: center;
+      padding: 0 1rem;
+      min-width: 140px;
+      border: 1px solid #e4e4e4;
+      border-bottom: none;
+
+      &.active, &:active {
+        background-color: white;
+        color: #2f455f
+      }
+    }
+  }
+
+  .tab-contents {
+    background-color: white;
+    width: 100%;
+    min-height: 4rem;
+    border: 1px solid #e4e4e4;
+  }
+
+}

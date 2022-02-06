@@ -1,0 +1,88 @@
+.mk-status {
+  font-size: 14px;
+  line-height: 14px;
+
+  display: inline-block;
+
+  &.is-online .online {
+    display: inline-block;
+  }
+
+  &.is-offline .offline {
+    display: inline-block;
+  }
+
+  &.is-refreshing .refreshing {
+    display: inline-block;
+  }
+
+
+  .online, .offline, .refreshing {
+    display: none;
+  }
+
+  position: relative;
+  .online {
+    @include rotate(-45deg);
+    position: relative;
+    top: -0.18em;
+
+  }
+
+  .notifications {
+    position: absolute;
+    font-size: 1.5rem;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    top: 10px;
+    left: 25px;
+  }
+
+  .cover {
+    z-index: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .mk-popover-contents {
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    right: -50px;
+    width: 300px;
+    max-height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.3);
+
+    &:after {
+      bottom: 100%;
+      right: 65px;
+      border: 10px solid transparent;
+      content: " ";
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: white;
+    }
+  }
+
+  .mk-status-details {
+
+    .status-text {
+      margin: 2rem 0;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+  }
+
+
+}

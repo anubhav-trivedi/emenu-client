@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-xs-12">
+       <h3>Order Terms and Conditions</h3>
+    </div>
+</div>
+<ul>
+    <li ng-repeat="addOnItem in addOnItems | filter:filterAddOns('Order Terms and Conditions')">
+        <div class="row" ng-class="{even: $even, odd: $odd}">
+            <div class="col-xs-12">
+                 <label><input class="check-box" ng-model="itemToOrderItem[addOnItem.Id].OrderId" ng-true-value="{{order.Id}}" ng-false-value="" type="checkbox" /> {{addOnItem.Name}}</label>
+            </div>
+        </div>
+    </li>
+</ul>
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Add Ons</h3>
+    </div>
+</div>
+<ul>
+    <li ng-repeat="addOnItem in addOnItems | filter:filterAddOns('Add On')">
+        <div class="row" ng-class="{even: $even, odd: $odd}">
+            <div class="col-xs-7">
+                <label><input class="check-box" ng-model="itemToOrderItem[addOnItem.Id].OrderId" ng-true-value="{{order.Id}}" ng-false-value="" type="checkbox" /> {{addOnItem.Name}}</label>
+            </div>
+            <div class="col-xs-5 input-group">
+                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                <input class="form-control" ng-model="itemToOrderItem[addOnItem.Id].TotalPrice" type="number" z-validate />
+            </div>
+        </div>
+    </li>
+</ul>
+<div class="row">
+    <div class="col-xs-7">
+        <label>
+            <input class="check-box" ng-model="hasDiscount" type="checkbox" />
+            Discount
+        </label>
+    </div>
+    <div class="col-xs-5 input-group">
+        <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+        <input class="form-control" min="0" ng-model="order.Discount" type="number" z-validate />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-7">
+         <label><input class="check-box" ng-model="order.Loyalty" ng-true-value="YES" ng-false-value="" type="checkbox" /> Loyalty Opted</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-5">
+    <b>Remarks</b>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+    <textarea class="form-control" ng-model="order.Remarks"></textarea>
+    </div>
+</div>
+<div class="row links">
+    <div class="cols-xs-12">
+        <a ng-click="mk.nav.goBack()"  class="btn btn-primary">Done</a>
+    </div>
+</div>
+
+
+

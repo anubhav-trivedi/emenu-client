@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div ng-include="'views/order/order_list.html'"></div>
+    </div>
+</div>
+<div class="row links">
+    <div class="col-xs-12">
+        <a ng-click="mk.nav.goBack()"  class="btn btn-primary">Add More</a>
+    </div>
+</div>
+<div class="row links">
+    <div class="col-xs-12">
+        <a ng-href="#/order/{{order.Id}}/customize" class="btn btn-primary">Customize Order</a>
+    </div>
+</div>
+<div class="row links">
+    <div class="col-xs-12">
+        <a ng-show="disableButtons" ng-href="#/order/{{order.Id}}/sales_order" class="btn btn-primary">Sales Order</a>
+    </div>
+</div>
+<div class="row links">
+    <div class="col-xs-12">
+        <a ng-show="disableButtons" ng-href="#/order/{{order.Id}}/quote_order" class="btn btn-primary">Generate Quote</a>
+    </div>
+</div>
+

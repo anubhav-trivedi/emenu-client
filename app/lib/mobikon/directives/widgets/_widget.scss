@@ -1,0 +1,225 @@
+@import '../../lib/mobikon/styles/flexbox-mixins';
+
+dashboard {
+  display: block;
+  @extend .container;
+  padding-top: 1rem;
+
+  > row {
+    width: 100%;
+    margin: 0rem 0rem 1rem 0rem;
+    &:last-child {
+      margin-bottom: 0rem;
+    }
+  }
+}
+
+widget {
+  display: block;
+  position: relative;
+
+  $title-width: 35px;
+  $column-padding: 1rem;
+
+  background-color: white;
+
+  padding-left: $title-width;
+  min-height: 175px;
+
+  [mk-load] .message-container {
+    padding-top: 85px !important;
+  }
+
+  h1 {
+    display: block;
+    width: $title-width;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    color: white;
+    background-color: #25344b;
+    text-transform: uppercase;
+    @include writing-mode(vertical-lr);
+    text-align: center;
+    line-height: $title-width;
+    letter-spacing: 0.1rem;
+    font-size: 1.1rem;
+  }
+
+  contents {
+    display: block;
+
+    row {
+      height: 175px;
+      margin: 0rem;
+      @include flex-display;
+      @include flex-justify-content;
+      @include flex-align-items(center);
+
+      border-top: 1px solid #d6d6d6;
+      border-right: 1px solid #d6d6d6;
+      border-bottom: 1px solid #d6d6d6;
+
+      letter-spacing: 0;
+      column {
+        padding: 1rem;
+        vertical-align: middle;
+        letter-spacing: initial;
+      }
+    }
+  }
+
+  * {
+    font-weight: lighter;
+  }
+
+  .highlight {
+    font-weight: light;
+  }
+
+  .highlight-colored {
+    @extend .highlight;
+    color: $color-dark-yellow;
+  }
+
+  .font-metric-lrg {
+    font-size: 6rem;
+  }
+
+  .font-metric-med {
+    font-size: 4.8rem;
+  }
+
+  .font-metric-sml-med {
+    font-size: 4rem;
+  }
+
+  .font-metric-sml {
+    font-size: 3.2rem;
+  }
+
+  .font-metric-x-sml {
+    font-size: 2.4rem;
+  }
+
+  .font-text-lrg {
+    font-size: 2.2rem;
+  }
+
+  .font-text-med {
+    font-size: 1.8rem;
+  }
+
+  .font-text-sml-med {
+    font-size: 1.5rem;
+  }
+
+  .font-text-sml {
+    font-size: 1.4rem;
+  }
+
+  small-box {
+    @include flex-display(inline-flex);
+    @include flex-flow(column);
+    @include flex-justify-content(center);
+    position: relative;
+    text-align: center;
+    width: 12rem;
+    height: 8rem;
+    background-color: #f3f3f3;
+    color: #8d8d8d;
+
+    div:nth-child(1) {
+      @extend .highlight;
+      @extend .font-text-sml;
+      text-transform: uppercase;
+    }
+
+    div:nth-child(2) {
+      @extend .highlight;
+      @extend .font-metric-sml;
+    }
+
+    .band {
+      $color-band-width: 0.5rem;
+      position: absolute;
+      left: 0; bottom: 0;
+      width: $color-band-width;
+      height: 100%;
+      margin-left: -$color-band-width;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  column {
+    &.description {
+      @extend .font-text-lrg;
+      text-align: center;
+
+      .sub-description {
+        @extend .font-text-sml-med;
+      }
+    }
+
+    inner {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding: $column-padding;
+    }
+
+    &.metric {
+      position: relative;
+      height: 100%;
+
+      inner {
+        color: white;
+        metric {
+          font-size: 4rem;
+          line-height: 4rem;
+          @extend .highlight;
+        }
+        h2 {
+          position: absolute;
+          bottom: $column-padding;
+          left: $column-padding;
+          font-size: 1.7rem;
+        }
+        i {
+          position: absolute;
+          top: $column-padding;
+          right: $column-padding;
+          font-size: 4rem;
+          opacity: 0.5;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 0.5rem;
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+
+      }
+    }
+  }
+
+  chart {
+    display: block;
+    position: relative;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+
+    a {
+      // hide the js charts water mark
+      display: none !important;
+    }
+  }
+}

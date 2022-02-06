@@ -1,0 +1,12 @@
+@import "mixins";
+
+.mk-order-summary {
+  .links {
+    text-align: center;
+    margin-top:20px;
+  }
+
+  .btn-primary {
+    min-width: 20rem;
+  }
+}

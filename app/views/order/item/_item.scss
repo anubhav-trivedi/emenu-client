@@ -1,0 +1,63 @@
+@import "mixins";
+
+.mk-order-item {
+  .fa-plus-circle, .fa-minus-circle, .fa-trash-o {
+    font-size:5rem;
+    color:#3276B1;
+    line-height: 3rem;
+  }
+  .item-buttons {
+
+  }
+  .size-row {
+    line-height: 1rem;
+  }
+
+  .img-container {
+    height: 200px;
+    line-height: 200px;
+    background-color: $img-background-color;
+
+    .img-inner-container {
+      background-color: $img-background-color;
+      padding: 20px;
+    }
+  }
+
+  .row {
+    padding-bottom: 1em;
+  }
+
+  .description {
+    white-space: pre;
+  }
+
+  .item-image {
+    max-width: 100%;
+  }
+
+  .done-cover {
+    display: inline-block;
+  }
+  .warning {
+    color:red;
+    font-size: 10px;
+    line-height:10px;
+  }
+
+  .btn {
+    min-width: 10rem;
+  }
+
+
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color: rgba(0,0,0,0);
+  }
+
+  .done-tapped {
+    ::-webkit-input-placeholder { /* WebKit browsers */
+      color: red;
+    }
+  }
+
+}

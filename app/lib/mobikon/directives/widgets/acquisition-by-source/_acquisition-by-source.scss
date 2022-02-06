@@ -1,0 +1,58 @@
+mk-wdg-acquisition-by-source {
+
+  widget {
+    display: inline-block;
+    width: 64.2%; // hardcoded for now
+    margin-left: -4px;
+    padding-left: 0rem;
+
+    contents row {
+      height: 265px;
+      &.no-margin {
+        margin: 0rem;
+      }
+
+      .boxes {
+        @extend .font-text-lrg;
+        height: 100%;
+        text-align: left;
+        margin-left: 2rem;
+
+        .title {
+          @extend .highlight-colored;
+          padding: 1.5rem 0rem;
+        }
+
+        .inner-box {
+          > small-box {
+            margin-left: 0.5rem;
+            margin-bottom: 0.5rem;
+          }
+
+          .feedback.color-band:after {
+            background-color: $color-green;
+          }
+          .concierge.color-band:after {
+            background-color: $color-red;
+          }
+          .email.color-band:after {
+            background-color: $color-cyan;
+          }
+          .sms.color-band:after {
+            background-color: $color-dark-gray;
+          }
+          .web.color-band:after {
+            background-color: $color-yellow;
+          }
+          .manual.color-band:after {
+            background-color: $color-magenta;
+          }
+        }
+      }
+
+      .graph {
+        height: 100%;
+      }
+    }
+  }
+}

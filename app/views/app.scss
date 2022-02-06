@@ -1,0 +1,117 @@
+$fa-font-path: "../fonts";
+$mk-image-path: "../images";
+@if compass-env() == 'development' {
+  $fa-font-path: "../../lib/bower_components/font-awesome/fonts";
+}
+
+@import "font-awesome/scss/font-awesome";
+@import "bootstrap-sass/lib/bootstrap";
+@import '**/*';
+@import '../lib/mobikon/directives/status/status';
+@import "../../lib/mobikon/styles/_common-mixins.scss";
+@import '../lib/mobikon/directives/table/table';
+@import '../lib/mobikon/styles/vertical-center';
+
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: transparent image-url("back.jpg") repeat;
+}
+
+header, .well {
+  background-color: #cdb079;
+  border-color: #69573d;
+}
+
+.app-contents {
+  padding-bottom: $grid-gutter-width;
+}
+
+.nav-pills > li > a {
+  font-weight: bold;
+  color: black;
+}
+
+.hero-unit h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+header {
+  @extend .navbar;
+  @extend .navbar-default;
+
+  $padding: $grid-gutter-width / 2;
+  font-size: 2rem;
+
+  a {
+    display: inline-block;
+    height: 70%;
+    min-width: 50px;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  > left, > middle, > right {
+    display: block;
+    height: $navbar-height;
+    line-height: $navbar-height;
+  }
+
+  > left, > right {
+    position: absolute;
+    top: 0;
+  }
+
+  > left {
+    left: $padding;
+  }
+  > middle {
+    width: 100%;
+    text-align: center;
+  }
+  > right {
+    right: $padding;
+    text-align: right;
+  }
+}
+
+i {
+  font-style: normal;
+}
+
+ol, ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input, select {
+  //-webkit-appearance: none;
+}
+
+.fa {
+  text-decoration: none;
+}
+
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  box-sizing: border-box;
+}
+
+.modal-dialog {
+  width: auto !important;
+}

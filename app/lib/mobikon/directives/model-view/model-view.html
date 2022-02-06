@@ -1,0 +1,32 @@
+
+    <div class="row">
+        <div class="col-xs-6">
+            <form class="well form-horizontal" ng-submit="save()">
+                <div class="form-group" ng-repeat="field in options.fields">
+                    <label class="control-label col-xs-4">{{field.displayName}}</label>
+                    <div class="col-xs-8">
+                        <mk-in-place-edit options="field.edit" value="data[field.id || field.displayName].value" filter="field.filter"></mk-in-place-edit>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--Put  ng-show="false" if you don't want to show this button.-->
+                    <div class="col-xs-8 col-xs-offset-4">
+                        <button ng-disabled='!modified' ng-if='!isSaving' type="submit" class="btn btn-success"><i class="fa fa-check"></i> Save Changes</button>
+                        <span ng-if='isSaving'>Saving...</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div ng-repeat="grid in grids" class="col-xs-6">
+            <div class="grid panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{grid.displayName}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div  mk-grid="grid.options"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>

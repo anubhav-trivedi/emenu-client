@@ -1,0 +1,19 @@
+<div class="row">
+    <ul>
+        <div class="row" ng-repeat='group in groups'>
+            <li class="item col-xs-4" ng-repeat="item in group">
+                <a ng-href='#/order/{{order.Id}}/item/{{item.Id}}'>
+                    <div class="img-container">
+                        <img ng-src="{{item.Image}}" mk-error-src="assets/images/defaultItem.png" class="img-responsive" />
+                        <div class="quantity">{{order.getOrderItemForItem(item).Quantity}}</div>
+                    </div>
+                    <div class="item-details">
+                        <div class="item-name">{{item.Name}}</div>
+                        <div ng-show="item.Price" class="item-price">{{item.Price | currency}}</div>
+                    </div>
+                </a>
+            </li>
+        </div>
+
+    </ul>
+</div>

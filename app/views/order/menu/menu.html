@@ -1,0 +1,28 @@
+<mk-header>
+    <left>
+        <a ng-click="mk.nav.goBack()">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+    </left>
+    <right>
+       <div><a ng-href="#/order/{{order.Id}}/summary" ng-disabled="!cartEmpty" style="margin-bottom: 5px" class="btn custom-btn btn-primary btn-lg">Checkout</a></div>
+    </right>
+</mk-header>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="well">
+            <ul class="nav nav-pills">
+                <li ng-class="itemClass(category)"  ng-repeat='(category, subcategories) in categories'>
+                    <a class="label label-default category-button" ng-href='{{getCategoryPath(category)}}'>{{category}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div ui-view>
+        </div>
+    </div>
+</div>

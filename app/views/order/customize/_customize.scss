@@ -1,0 +1,35 @@
+@import "mixins";
+
+.mk-order-customize {
+  $height: 60px;
+  .row {
+    border-bottom: 0.5px solid;
+    label {
+      height: $height;
+    }
+  }
+  .input-group-addon {
+    text-align: left;
+  }
+  .check-box {
+    margin-right: 2rem;
+  }
+
+  .links {
+    text-align: center;
+    margin-top:20px;
+  }
+
+  .btn-primary {
+    min-width: 20rem;
+  }
+
+  .invalid {
+    position: absolute;
+    color: #b00b00;
+    font-size: .8em;
+    top: 35px;
+    width: inherit;
+    left: 20px;
+  }
+}

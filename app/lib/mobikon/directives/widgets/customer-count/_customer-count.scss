@@ -1,0 +1,35 @@
+mk-wdg-customer-count {
+  widget {
+    display: inline-block;
+    width: 35.8%; // hardcoded for now
+
+    contents row {
+      height: 265px;
+      &.no-margin {
+        margin: 0rem;
+      }
+      column {
+        height: 100%;
+        @include flex-display;
+        @include flex-flow(column);
+        @include flex-justify-content(space-between);
+      }
+    }
+  }
+
+  .description div.highlight-colored {
+    padding-top: 1.5rem;
+  }
+
+  i {
+    font-size: 4rem;
+    position: relative;
+    bottom: 0.8rem;
+    &.fa-sort-up {
+      color: $color-green;
+    }
+    &.fa-sort-down {
+      color: $color-red;
+    }
+  }
+}

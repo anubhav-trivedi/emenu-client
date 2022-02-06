@@ -1,0 +1,12 @@
+row {
+  @extend .row;
+  display: block;
+}
+
+column {
+  @for $span from 1 through 12 {
+    &[span="#{$span}"] {
+      @extend .col-xs-#{$span};
+    }
+  }
+}

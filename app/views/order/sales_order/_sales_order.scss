@@ -1,0 +1,37 @@
+@import "mixins";
+
+.mk-order-salesOrder {
+  $height: 40px;
+
+  .deposit-amount {
+    line-height: $height;
+  }
+  .delAdd {
+    margin-bottom: 8px;
+  }
+
+  .amount-paid {
+    height: $height;
+  }
+  .link {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .invalid {
+    position: absolute;
+    color: #b00b00;
+    font-size: .8em;
+    top: 40px;
+    width: inherit;
+    left: 20px;
+  }
+  .loading {
+    position: absolute;
+    top: 7%;
+    left: 7%;
+  }
+
+  .warning {
+    color: red;
+  }
+}

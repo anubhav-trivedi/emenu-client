@@ -1,0 +1,19 @@
+.mk-customer-login  {
+  height: 100%;
+
+  .container-login {
+    height: 100%;
+    @include flex-display;
+    @include flex-flow(column);
+    @include flex-justify-content(space-around);
+    @include flex-align-items(center);
+
+    .mk-btn {
+      width: 100%;
+    }
+
+    .mk-horizontal-btn-group {
+      width: 100%;
+    }
+  }
+}

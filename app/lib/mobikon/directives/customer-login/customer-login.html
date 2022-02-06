@@ -1,0 +1,24 @@
+<div class="mk-customer-login">
+    <div ng-if="!loginLoader" class="container-login">
+        <button ng-if="providers.facebook" class="mk-btn mk-btn-logo mk-btn-facebook" ng-click="oauthLogin('facebook')">
+            <span class="mk-logo"><i class="fa fa-facebook-square"></i></span>
+            <span class="mk-text">Sign In With Facebook</span>
+        </button>
+        <button ng-if="providers.google" class="mk-btn mk-btn-logo mk-btn-google" ng-click="oauthLogin('google')">
+            <span class="mk-logo"><i class="fa fa-google-plus-square"></i></span>
+            <span class="mk-text">Sign In With Google</span>
+        </button>
+        <button ng-if="providers.twitter" class="mk-btn mk-btn-logo mk-btn-twitter" ng-click="oauthLogin('twitter')">
+            <span class="mk-logo"><i class="fa fa-twitter-square"></i></span>
+            <span class="mk-text">Sign In With Twitter</span>
+        </button>
+        <div ng-if="providers.email" class="mk-horizontal-btn-group">
+            <a class="mk-link" href ng-click="mobikonLogin()">Login</a>
+            <a class="mk-link" href ng-click="mobikonRegister()">Sign Up With Email</a>
+        </div>
+        <span ng-if="allowSkip"><a class="mk-link" href ng-click="skip()">Skip</a></span>
+    </div>
+    <div ng-if="!!loginLoader">
+        <div mk-load="loginLoader" loading-message="{{loginState}}"></div>
+    </div>
+</div>

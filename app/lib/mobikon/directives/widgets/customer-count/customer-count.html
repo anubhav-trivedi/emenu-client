@@ -1,0 +1,16 @@
+<row class="no-margin">
+    <column span="12" class="description">
+        <div class="highlight-colored">Total Customer Count</div>
+        <div class="highlight font-metric-lrg">{{data.total}} <i class="fa" ng-class="{'fa-sort-up': signum > 0, 'fa-sort-down': signum < 0}"></i></div>
+        <div>
+            <small-box>
+                <div>New</div>
+                <div>{{data.new}}</div>
+            </small-box>
+            <small-box>
+                <div>Repeat</div>
+                <div>{{data.repeat}}</div>
+            </small-box>
+        </div>
+    </column>
+</row>

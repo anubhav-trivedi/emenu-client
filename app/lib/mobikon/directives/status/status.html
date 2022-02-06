@@ -1,0 +1,32 @@
+<div class="mk-status is-{{online.status}}">
+    <a ng-click="statusOpen = !statusOpen">
+        <i class="online fa fa-rss"></i>
+        <i class="refreshing fa fa-cog fa-spin"></i>
+        <i class="offline fa fa-ban"></i>
+        <div ng-if="queue.queuedJobs.length" class="notifications">{{queue.queuedJobs.length}}</div>
+    </a>
+    <div class="mk-popover" ng-show="statusOpen">
+        <div class="cover" ng-click="statusOpen = false"></div>
+        <div class="mk-popover-contents arrow_box">
+
+            <div class="mk-status-details">
+                <div class="status-text">
+                    <span ng-show="online.status != 'online'">You are offline</span>
+                    <span ng-show="online.status == 'online'">You are online</span>
+                </div>
+
+                <mk-table class="queued-jobs">
+                    <row ng-repeat="job in queue.queuedJobs">
+                        <left class="job-status">
+                            <i ng-show="job.state == 'working'" class="fa fa-cog fa-spin"></i>
+                            <i ng-show="job.state != 'working'" class="fa fa-archive"></i>
+                        </left>
+
+                        <middle class="job-text">{{job.description}}</middle>
+                    </row>
+                </mk-table>
+            </div>
+        </div>
+    </div>
+
+</div>

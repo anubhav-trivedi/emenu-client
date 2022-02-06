@@ -1,0 +1,18 @@
+<row class="no-margin">
+    <column span="7" class="boxes">
+        <div class="title">Activity Source</div>
+
+        <div class="inner-box" ng-repeat="sourceGroup in data.sourceGroups">
+            <small-box class="color-band" ng-class="source.source" ng-repeat="source in sourceGroup">
+                <div>{{source.source}}</div>
+                <div>{{source.count}}</div>
+                <div class="band" style="background-color: {{source.color}}"></div>
+            </small-box>
+        </div>
+
+    </column>
+
+    <column span="5" class="graph">
+        <chart></chart>
+    </column>
+</row>

@@ -1,0 +1,10 @@
+[mk-vertical-center] {
+  > .center-container {
+    display: table;
+    height: 100%;
+    > .center {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}

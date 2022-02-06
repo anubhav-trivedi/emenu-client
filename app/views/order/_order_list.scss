@@ -1,0 +1,35 @@
+@import "mixins";
+
+.mk-order-order-list {
+  .row {
+
+    line-height: 40px;
+    &.even {
+      background-color: #e2f4fc;
+    }
+    &.odd {
+      background-color: #ffffff;
+    }
+  }
+
+  .no-color {
+    text-align: center;
+  }
+  .fa-trash-o {
+    font-size:4rem;
+    color:#3276B1;
+  }
+
+  $second-line-indent: 1em;
+  .item-name {
+    padding-left: $second-line-indent;
+    text-indent: -$second-line-indent;
+    margin: 0;
+  }
+  .warning {
+    color: red;
+  }
+  .amount-paid {
+    height: 40px;
+  }
+}

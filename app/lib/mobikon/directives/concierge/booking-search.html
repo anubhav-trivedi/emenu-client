@@ -1,0 +1,44 @@
+<div class="mk-booking-search">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="search" mk-native-picker="pickerOptions" mk-model="currentSearch">
+                        <span class="search-description">
+                            <ng-pluralize count="currentSearch.pax" when="{'1': '{} person', 'other': '{} people'}"> </ng-pluralize>
+                            for {{searchDate | mkDate}}
+                        </span>
+                    <i class="icon-search"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="results" data-snap-ignore="true">
+        <div class="results-inner">
+            <div ng-if="existingBooking">
+                <div class='error' ng-if="existingBooking.status == 'Canceled'">
+                    You have canceled a reservation on this day
+                </div>
+                <div class='error' ng-if="existingBooking.status != 'Canceled'">
+                    You have a reservation on this day
+                </div>
+            </div>
+            <div ng-if="times && !existingBooking">
+                <div class='error' ng-if="!times.length">
+                    Sorry no reservations are available
+                </div>
+                <ul ng-if='times.length' ng-show="times.length">
+                    <li ng-repeat="tableTime in times">
+                        <a ng-click="makeBooking(tableTime)">{{tableTime.time.format('h:mma')}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div ng-show="!existingBooking && searchState=='searching'" class="searching">
+                <i class="loader-icon icon-gear icon-spin"></i>
+            </div>
+        </div>
+    </div>
+
+</div>

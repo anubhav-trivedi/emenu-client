@@ -1,0 +1,7 @@
+<div class="mk-requires-login">
+    <div ng-if="!customer" ng-class="{'logged-off': loginState != 'logging-in'}">
+        <div ng-if="loginState != 'logging-in'" class="central-text">{{requiredMessage}}</div>
+        <mk-customer-login callback="loginCallback"></mk-customer-login>
+    </div>
+    <div ng-if="!!customer" class="transclude-container" ng-transclude></div>
+</div>

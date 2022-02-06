@@ -1,0 +1,49 @@
+.mk-server {
+  $height: 95px;
+
+  .profile-row {
+    .profile-img {
+      float: left;
+      height: $height;
+    }
+
+    .profile-name {
+      float: left;
+      line-height: $height;
+      margin: 0 1rem;
+    }
+
+    > div {
+      line-height: $height;
+    }
+  }
+  .date-row {
+    .date-label {
+      line-height: 5;
+    }
+    .date-picker {
+      height: 30px;
+    }
+  }
+
+  .details {
+    margin: 2rem 0;
+
+    .detail {
+      font-weight: bold;
+    }
+  }
+
+  [mk-grid] {
+
+    .ngFooterTotalItems {
+      display: none;
+    }
+
+    .ngRowCountPicker {
+      display: none;
+    }
+
+  }
+}
+

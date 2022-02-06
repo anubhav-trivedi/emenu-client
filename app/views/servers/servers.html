@@ -1,0 +1,16 @@
+<mk-header>
+    <left></left>
+</mk-header>
+
+<div class="container">
+    <ul class="servers">
+        <li class="server" ng-repeat='server in servers'>
+            <a ng-href='#/password/{{server.Id}}'>
+                <div class="profile-image-container">
+                    <img class="profile-image img-circle img-responsive"  ng-src="{{server.Image}}" mk-error-src="assets/images/defaultServer.png">
+                </div>
+                <h4 class="profile-name">{{server.Name}}</h4>
+            </a>
+        </li>
+    </ul>
+</div>

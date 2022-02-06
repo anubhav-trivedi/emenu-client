@@ -1,0 +1,12 @@
+/**
+ * Centers a background image inside your element, preserving the aspect ratio
+ * and scaling the image as small as possible such that both its width and height
+ * are greater than or equal to the dimensions of the background area.
+ */
+@mixin mk-background-image($background-url, $width, $height) {
+  background: url($background-url);
+  background-position: center center;
+  background-size: cover;
+  width: $width;
+  height: $height;
+}

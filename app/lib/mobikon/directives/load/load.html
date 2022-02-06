@@ -1,0 +1,15 @@
+<div class="mk-load">
+    <div ng-if="mkLoad.status == 'loading'" class="loading message-container">
+        <div class="indicator fa fa-gear fa-spin"></div>
+        <div class="message">{{mkLoadMessages.loadingMessage}}</div>
+    </div>
+    <div ng-if="mkLoad.status == 'offline'" class="offline message-container">
+        <div class="indicator fa fa-ban"></div>
+        <div class="message">You are currently offline</div>
+    </div>
+    <div ng-if="mkLoad.status == 'loaded'" class="loaded" ng-transclude></div>
+    <div ng-if="mkLoad.status == 'error'"  class="offline message-container">
+        <div class="indicator fa fa-exclamation-triangle"></div>
+        <div class="message">Oops, something went wrong</div>
+    </div>
+</div>

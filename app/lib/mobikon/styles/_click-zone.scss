@@ -1,0 +1,18 @@
+/**
+ * Places a pseudo element on top of your
+ * html element to increase click-able area.
+ */
+@mixin mk-click-zone($size) {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    padding: $size / 2;
+    margin: -$size / 2;
+    z-index: 9000;
+  }
+}

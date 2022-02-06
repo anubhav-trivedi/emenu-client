@@ -1,0 +1,70 @@
+angular.module('mk.Config', [])
+    .factory('config', function($interpolate) {
+        var config = {
+            // Production Evorich
+//            menuId: '5A6D2428-81DA-43B1-A7E6-CA93DA5D2B50',
+//            accountId: '5db73479-bcbe-4f38-a3e0-8fb89f3c0448',
+//            addOnMenuTypeId: 'B04B5321-635B-4A67-93B4-015C9EAF5881',
+//            mainMenuTypeId: 'BCD8A759-EB18-42D4-AC40-020100031FB2',
+//            outletId: '151746ec-bb91-466e-b141-d74a70c72a66',
+//            emailIds: ['zoey@evorich.com.sg', 'alexaw@evorich.com.sg', 'dennis@evorich.com.sg'],
+
+            // Beta Evorich
+            menuId: '1D36A614-8ED3-4B21-A067-D5BAB3183A54',
+            accountId: 'fd63ef37-86cc-42e4-944e-a88e75d24e78',
+            addOnMenuTypeId: 'C518EAD3-A85B-4C95-83C0-9767F0DA6BE8',
+            mainMenuTypeId: 'A5C37FB2-9688-4930-BD2B-1A53B162C15D',
+            emailIds: ['anubhav@mobikontech.com'],
+            outletId: '45ca8890-e26d-4552-ac8a-4b4ef1f78bff', // 9792269F-9EDE-4585-BD70-818CCF960FDE
+
+            //    Production HKW
+//            menuId: '9792269F-9EDE-4585-BD70-818CCF960FDE',
+//            accountId: '5c250d7f-7e68-4c21-bb0b-ae2bd17e09e1',
+//            addOnMenuTypeId: '5509E0C2-ECE9-4303-BA90-9C367E5FEBD1',
+//            mainMenuTypeId: 'B39CF1DB-465F-42F3-A860-7A868631A272',
+//            outletId: '609f660f-c56e-4e64-9c8b-980b8b4ac6fa',
+//            emailIds: ['anubhav@mobikontech.com'],
+//            kotFontSize: 'large',
+
+            // Beta HKW
+//            menuId: '049510BB-052F-4CDA-B240-30022915965B',
+//            accountId: '0c24d249-e52b-4fd7-ad81-01d71afed6d3',
+//            addOnMenuTypeId: 'FF8FFF73-FF68-4553-A3C1-F73A9A213233',
+//            mainMenuTypeId: 'FCC35FC6-232A-47DC-B3D9-D45506E6EEF5',
+//            outletId: '76c854ad-56f2-4703-8fbb-58cb04b0359a',
+//            emailIds: ['anubhav@mobikontech.com'],
+//            conciergeSettingId: 4,
+//            kotFontSize: 'large',
+            data: {
+                //Production API
+//                host: 'http://api.mobikontech.com/api/breeze/v1.0',
+
+                //Beta API
+                host: 'http://beta.mobikontech.com:1337/breeze/v1.0/',
+                dataSet: [
+                    {rootModel: 'Menu', params: {Id: '{{menuId}}'}, options: {include: ['Items', 'Servers']}}
+                ],
+                autoRefreshDataSet: false,
+                useSaveQueue: true
+            }
+        };
+
+        return transform(config, parse);
+
+        function parse(val) {
+            if (angular.isString(val)) {
+                return $interpolate(val)(config);
+            } else {
+                return val;
+            }
+        }
+
+        function transform(object, transformer) {
+            angular.forEach(object, function(val, key) {
+                val = transformer(val);
+                if (angular.isObject(val)) val = transform(val, transformer);
+                object[key] = val;
+            });
+            return object;
+        }
+    });

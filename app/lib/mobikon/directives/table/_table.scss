@@ -1,0 +1,71 @@
+mk-table {
+  display: block;
+  text-align: left;
+
+  @mixin flex {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  @mixin flex-align($value) {
+    -webkit-box-align: $value;
+    -webkit-flex-align: $value;
+    -ms-flex-align: $value;
+    -webkit-align-items: $value;
+    align-items: $value;
+  }
+
+  @mixin flex-grow($value) {
+    -webkit-box-flex: $value;    /* iOS 6-, Safari 3.1-6 */
+    -webkit-flex-grow: $value;
+  }
+
+  @mixin flex-justify($value) {
+    -webkit-justify-content: $value;
+    justify-content: $value;
+  }
+
+  row {
+    @include flex;
+    height: 5rem;
+    padding: 0 1rem;
+
+    > left, > right, > middle, > follow {
+      @include flex;
+      @include flex-align(center);
+
+    }
+
+    > left, > right {
+      width: 25%;
+
+      > i {
+        font-size: 2rem;
+      }
+    }
+
+    > left {
+      @include flex-justify(flex-start);
+    }
+
+    > right, > follow {
+      @include flex-justify(flex-end);
+    }
+
+    > follow {
+      position: relative;
+      left: 0.9rem;
+      @include fa-icon('angle-right');
+      font-size: 1.3rem;
+    }
+
+    > middle {
+      @include flex-grow(1);
+      @include flex-justify(left);
+    }
+  }
+}

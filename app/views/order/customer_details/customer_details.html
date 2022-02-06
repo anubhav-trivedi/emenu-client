@@ -1,0 +1,76 @@
+<mk-header>
+    <left>
+        <a ng-click="mk.nav.goBack('server', {serverId: order.Server.Id})">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+    </left>
+</mk-header>
+<form class="form-horizontal" ng-class="{validated: state.validated}">
+    <div class="form-group">
+        <label class="col-xs-3">Customer Type</label>
+        <div class="col-xs-3">
+            <label>Individual <input class="form-control" ng-model="customer.IsCorporate" type="radio" ng-value="false" name="customer-type"/></label>
+        </div>
+        <div class="col-xs-3">
+            <label>Corporate <input class="form-control" ng-model="customer.IsCorporate" type="radio" ng-value="true" name="customer-type"/></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label ng-if="!customer.IsCorporate" class="col-xs-3" for="uid">IC No *</label>
+        <label ng-if="customer.IsCorporate" class="col-xs-3" for="uid">Corporate Id *</label>
+        <div class="col-xs-6">
+            <input class="form-control" id="uid" ng-disabled='state.saving || state.searching' ng-model='customer.UniqueId' type='text' z-validate />
+        </div>
+        <div class="search col-xs-3" ng-if="!state.searching">
+            <label ng-if="mk.online.status == 'online'">
+                <button class="btn btn-primary" ng-click="searchForExistingUser()">Search</button>
+            </label>
+            <div ng-if="mk.online.status != 'online'">
+                Customer search is disabled as you are offline
+            </div>
+        </div>
+        <div class="search col-xs-3" ng-if="state.searching">
+            <i class="fa fa-spinner fa-spin"></i> searching
+        </div>
+    </div>
+    <div class="form-group" ng-if="customer.IsCorporate">
+        <label class="col-xs-3" for="customer-name">Company Name *</label>
+        <div class="col-xs-9">
+            <input class="form-control" id="customer-company-name" ng-disabled='!state.inputEnabled || !customer.IsCorporate' ng-model='customer.CompanyName' type='text' z-validate />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3" for="customer-name">Name *</label>
+        <div class="col-xs-9"><input class="form-control" id="customer-name" ng-disabled='!state.inputEnabled' ng-model='customer.Name' type='text' z-validate /></div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3" for="customer-email">Email *</label>
+        <div class="col-xs-9"><input class="form-control" id="customer-email" ng-disabled='!state.inputEnabled' ng-model='customer.Email' type='text' autocorrect="off" autocapitalize="off" z-validate /></div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3" for="customer-cell-country">Country Code</label>
+        <div class="col-xs-9"><input class="form-control" id="customer-cell-country" ng-disabled='!state.inputEnabled' ng-model='customer.CellCountryCode' type='text' /></div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3" for="customer-cell-number">Mobile *</label>
+        <div class="col-xs-9"><input class="form-control" id="customer-cell-number" ng-disabled='!state.inputEnabled' ng-model='customer.CellNumber' type='text' z-validate /></div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3" for="customer-address">Address *</label>
+        <div class="col-xs-9"><input class="form-control" id="customer-address" ng-disabled='!state.inputEnabled' ng-model='customer.Address' type='text' z-validate /></div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3" for="customer-city">City</label>
+        <div class="col-xs-9"><input class="form-control" id="customer-city" ng-disabled='!state.inputEnabled' ng-model='customer.City' type='text'  /></div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-3" for="customer-zip">Postal Code *</label>
+        <div class="col-xs-9"><input class="form-control" id="customer-zip" ng-disabled='!state.inputEnabled' ng-model='customer.Zip' type='text' z-validate /></div>
+    </div>
+    <div class="form-group links" ng-click="validate()">
+        <div class="col-xs-12">
+            <span ng-show="state.saving"><i class="fa fa-spinner fa-spin"></i> saving</span>
+            <a ng-show="!saving" ng-click="submitDetails()" ng-disabled='!state.submitEnabled' class="btn btn-primary">Save and Continue</a>
+        </div>
+    </div>
+</form>

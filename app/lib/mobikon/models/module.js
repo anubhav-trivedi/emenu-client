@@ -1,0 +1,1 @@
+angular.module('mk.Models', ['mk.Utils', 'mk.Config', 'mk.Services', 'mk.Filters']);

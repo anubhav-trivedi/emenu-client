@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-class="itemClass(subCategory)" ng-repeat = '(subCategory, items) in subCategories'>
+                <a class="btn-link" ng-href = '{{getSubCategoryPath(subCategory)}}'>{{subCategory}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-9">
+        <div ui-view>
+
+        </div>
+    </div>
+</div>

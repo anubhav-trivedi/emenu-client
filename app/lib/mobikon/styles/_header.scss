@@ -1,0 +1,43 @@
+$header-height: $navbar-height;
+
+header, .header {
+  @extend .navbar;
+  @extend .navbar-default;
+
+  $padding: $grid-gutter-width / 2;
+  font-size: 2rem;
+
+  a {
+    display: inline-block;
+    min-width: 50px;
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  > left, > middle, > right {
+    display: block;
+    height: $header-height;
+    line-height: $header-height;
+  }
+
+  > left, > right {
+    position: absolute;
+    top: 0;
+  }
+
+  > left {
+    left: $padding;
+  }
+  > middle {
+    width: 100%;
+    text-align: center;
+  }
+  > right {
+    right: $padding;
+    text-align: right;
+  }
+
+  .error-label {
+    font-size: 0.6em;
+  }
+}

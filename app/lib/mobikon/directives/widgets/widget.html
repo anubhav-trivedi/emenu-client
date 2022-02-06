@@ -1,0 +1,6 @@
+<widget>
+    <h1 ng-if="_wdgOptions.title">{{_wdgOptions.title}}</h1>
+    <contents mk-load="loader">
+        <ng-include src="_wdgOptions.templateUrl"></ng-include>
+    </contents>
+</widget>

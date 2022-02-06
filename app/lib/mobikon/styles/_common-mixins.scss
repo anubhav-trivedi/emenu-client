@@ -1,0 +1,12 @@
+@import "compass/utilities";
+@import "compass/css3";
+
+@mixin fa-icon($icon) {
+  @extend .fa;
+  @extend .fa-#{$icon};
+}
+
+@mixin writing-mode($direction) {
+  writing-mode: $direction;
+  -webkit-writing-mode: $direction;
+}

@@ -1,0 +1,24 @@
+.mk-requires-login {
+
+  height: 100%;
+  .logged-off {
+    height: 100%;
+  }
+
+  .transclude-container {
+    height: 100%;
+  }
+
+  .text {
+    height: 20%;
+    @include flex-display;
+    @include flex-flow(column);
+    @include flex-justify-content(flex-end);
+    @include flex-align-items(center);
+  }
+
+  .mk-customer-login {
+    height: 70%;
+    padding: 1rem;
+  }
+}

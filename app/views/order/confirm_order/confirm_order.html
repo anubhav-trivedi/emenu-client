@@ -1,0 +1,71 @@
+<div ng-include="'views/order/order_list.html'"></div>
+<div class="row">
+    <div class="col-xs-6"></div>
+    <div class="col-xs-3">
+        <label class="deposit-amount">Deposit Amount</label>
+    </div>
+    <div class="col-xs-3">
+        <b>{{order.AmountPaid | currency}}</b>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6"></div>
+    <div class="col-xs-3">
+        <label class="deposit-amount">Amount Due</label>
+    </div>
+    <div class="col-xs-3">
+        <b>{{order.getTotal() - order.AmountPaid | currency}}</b>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <label><input ng-model="checkedTerms" type="checkbox" /> I agree to the terms & conditions.</label>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <ul class="terms-condition" type="circle">
+            <li>This quotation or price quoted is valid for 60days as of the date of this quotation.</li>
+
+            <li> The above mentioned price includes installation of floorboards, skirtings and accessories on prepared smooth levelled floor. The installed job remains the
+                property of *EVORICH until full settlement of payment.</li>
+
+            <li> The above is subject to 7% GST.</li>
+
+            <li> The client hereby grants *EVORICH irrevocable licence permission to re-enter the Client's premises for the purpose of taking repossession as herein if the
+                Client rejects or fails to pay the agreed purchased price. On top of that, late payment will be levied with a 12% per annum interest.</li>
+
+            <li> As EVORICH HOLDINGS PTE LTD is associated with DP SME Credit Bureau, please note that any over due payment/s will be listed in DP SME Credit Bureau's records and this record may be assessed by
+                financial institutions and other approving credit companies. * All installation carried out by Evorich is in compliance to industry practices and this shall override all consumers individual requests.</li>
+
+            <li> All areas of warranty will be void for payment not fulfilled within 7days after installation.
+
+            <li> Customers understand & accept that all wood products will have colour & tone variations as well as cracklines whether obvious or hairline.</li>
+
+            <li> If order is Cancelled, 80% of the contract sum still appliers.</li>
+
+            <li> 40% of contract sum applies for the change of colours plus a delivery charge of $100.</li>
+
+            <li> Evorich reserves the right to replace goods of equivalence in the event of unforeseen circumstances.</li>
+
+            <li> All customers cannot claims EVORICH for * any defects* at the installation site unless customer can show evidence of pictures taken before any work
+                commencement at the said site and there must not be any other 2nd party present during the installation.</li>
+
+            <li> Any claim or unacceptance must be notified by SMS IMMEDIATELY to respective salesperson and with written notice to Biz@EVORICH.com.sg with picture taken within 5 days upon job completion or it
+                shall deemed to be accepted and shall override the "Lemon Law".</li>
+
+            <li> EVORICH shall extend goods of equivalence based on EVORICH discretion in the event of circumstantial reason.</li>
+
+            <li>*Evorich herewith refers to Evorich Holdings Pte Ltd, Evorich Manufacturing Pte Ltd.</li>
+        </ul>
+    </div>
+</div>
+<div class="row link">
+    <div class="col-xs-12">
+        <div class="confirm"><hr><span>Confirm</span><hr></div>
+        <button ng-show="!saving" ng-disabled="!checkedTerms" class="btn btn-primary" ng-click="confirmOrder()">Email</button>
+        <button ng-show="!saving" ng-disabled="!checkedTerms" class="btn btn-primary" ng-click="confirmOrder(true)">Email and Print</button>
+        <div ng-show="saving" class="loading"><i class="fa fa-spinner fa-spin"></i> saving </div>
+    </div>
+</div>
+

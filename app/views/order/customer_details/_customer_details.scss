@@ -1,0 +1,42 @@
+@import "mixins";
+
+.mk-order-customerDetails {
+
+  .invalid {
+    color:#b00b00;
+    font-size: .8em;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    display: none;
+  }
+
+  .search-text {
+    position:absolute;
+    top:10px;
+    left:30%;
+  }
+  .icon-asterisk-invalid
+  {
+    display: none;
+  }
+
+  .ng-pristine ~ .invalid {
+    display: none;
+  }
+  .ng-valid ~ .invalid {
+    display: block;
+  }
+
+  .validated .invalid {
+    display: inline !important;
+  }
+
+  .links {
+    text-align: center;
+    margin-top:20px;
+  }
+  .btn-primary {
+    min-width: 20rem;
+  }
+}

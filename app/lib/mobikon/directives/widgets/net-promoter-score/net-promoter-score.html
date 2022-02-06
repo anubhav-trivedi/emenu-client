@@ -1,0 +1,37 @@
+<row>
+    <column span="4" class="description border">
+        <div class="highlight-colored">Net Promoter Score</div>
+        <div class="sub-description">% Promoters - % Detractors</div>
+        <div class="highlight font-metric-lrg">{{data.score}}<span class="highlight font-metric-sml"> %</span></div>
+    </column>
+
+    <column span="3" class="description promoters">
+        <div class="inner-box">
+            <div class="stick-man"></div>
+            <div>
+                <div>Promoters</div>
+                <div class="highlight font-metric-med">{{data.promoters}}<span class="highlight font-metric-x-sml"> %</span></div>
+            </div>
+        </div>
+    </column>
+
+    <column span="3" class="description detractors">
+        <div class="inner-box">
+            <div class="stick-man"></div>
+            <div>
+                <div>Detractors</div>
+                <div class="highlight font-metric-med">{{data.detractors}}<span class="highlight font-metric-x-sml"> %</span></div>
+            </div>
+        </div>
+    </column>
+
+    <column span="3" class="description passives">
+        <div class="inner-box">
+            <div class="stick-man"></div>
+            <div>
+                <div>Passives</div>
+                <div class="highlight font-metric-med">{{data.passives}}<span class="highlight font-metric-x-sml"> %</span></div>
+            </div>
+        </div>
+    </column>
+</row>

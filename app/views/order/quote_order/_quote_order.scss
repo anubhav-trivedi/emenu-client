@@ -1,0 +1,21 @@
+@import "mixins";
+
+.mk-order-quoteOrder {
+  .link {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .terms-condition {
+    font-size: 0.8em;
+    padding: 0.8em
+  }
+
+  .confirm {
+    margin-bottom: 1em;
+    hr {
+      margin: 0.5em;
+      display: inline-block;
+      width: 200px;
+    }
+  }
+}

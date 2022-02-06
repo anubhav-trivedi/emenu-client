@@ -1,0 +1,8 @@
+<div class="tab-headers">
+    <div ng-class="{active: mkTabs.enabled == tab.id}" class="tab-header" ng-repeat="tab in mkTabs.tabs" ng-click="tabClicked(tab.id)">
+        {{tab.title}}
+    </div>
+</div>
+<div class="tab-contents" ng-transclude >
+
+</div>

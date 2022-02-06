@@ -1,0 +1,151 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp,app}) assets/styles/main.css -->
+    <link rel="stylesheet" type="text/css" href="styles/app.css">
+    <link rel="stylesheet" type="text/css" href="lib/bower_components/ng-grid/ng-grid.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/mobikon/thirdparty/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <!-- endbuild -->
+</head>
+<body ng-app="yoMenuApp">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="lib/bower_components/es5-shim/es5-shim.js"></script>
+<script src="lib/bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="app-body">
+    <header>
+        <left>
+            <a ng-click="mk.nav.goBack()"><i class="fa fa-chevron-left"></i></a>
+        </left>
+        <middle>Evorich Order</middle>
+        <right>
+            <mk-status></mk-status>
+            <a onclick="WebViewJavascriptBridge.send('openSettings')"><i class="fa fa-gear"></i></a>
+        </right>
+    </header>
+    <div class="app-contents" ng-if="dataLoaded">
+        <div ui-view></div>
+    </div>
+</div>
+
+<!-- build:js assets/scripts/plugins.js -->
+<script src="lib/bower_components/jquery/jquery.js"></script>
+<script src="lib/bower_components/angular/angular.js"></script>
+<script src="lib/bower_components/lodash/dist/lodash.js"></script>
+<script src="lib/bower_components/q/q.js"></script>
+<script src="lib/bower_components/breeze/Breeze.Client/Scripts/breeze.debug.js"></script>
+<script src="lib/bower_components/ng-grid/plugins/ng-grid-flexible-height.js"></script>
+<script src="lib/bower_components/ng-grid/ng-grid-2.0.7.debug.js"></script>
+<script src="lib/bower_components/momentjs/moment.js"></script>
+<script src="lib/bower_components/bootstrap-sass/js/modal.js"></script>
+<script src="lib/bower_components/bootstrap-sass/js/tooltip.js"></script>
+<script src="lib/bower_components/bootstrap-sass/js/popover.js"></script>
+<script src="lib/mobikon/thirdparty/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<!-- endbuild -->
+
+<!-- build:js assets/scripts/modules.js -->
+<script src="lib/bower_components/angular-resource/angular-resource.js"></script>
+<script src="lib/bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="lib/bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="lib/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="lib/bower_components/breeze/Breeze.Client/Scripts/Labs/breeze.directives.validation.js"></script>
+<script src="lib/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- endbuild -->
+
+<script src="config.js"></script>
+
+<!-- build:js({.tmp,app}) assets/scripts/scripts.js -->
+<script src="lib/mobikon/utils/construct.js"></script>
+<script src="lib/mobikon/utils/mobikon-utils.js"></script>
+<script src="lib/mobikon/models/to$q.js"></script>
+
+<script src="lib/mobikon/services/module.js"></script>
+<script src="lib/mobikon/services/client-store.js"></script>
+<script src="lib/mobikon/services/bridge.js"></script>
+<script src="lib/mobikon/services/navigation.js"></script>
+<script src="lib/mobikon/services/renderer.js"></script>
+<script src="lib/mobikon/services/job-queue.js"></script>
+<script src="lib/mobikon/services/email.js"></script>
+<script src="lib/mobikon/services/print.js"></script>
+<script src="lib/mobikon/services/modal.js"></script>
+
+<script src="lib/mobikon/filters/module.js"></script>
+<script src="lib/mobikon/filters/group.js"></script>
+<script src="lib/mobikon/filters/dynamic.js"></script>
+
+<script src="lib/mobikon/models/module.js"></script>
+<script src="lib/mobikon/models/data.js"></script>
+<script src="lib/mobikon/services/online-status.js"></script>
+<script src="lib/mobikon/models/common/customer.js"></script>
+<script src="lib/mobikon/models/common/address.js"></script>
+<script src="lib/mobikon/models/emenu/item.js"></script>
+<script src="lib/mobikon/models/emenu/menu.js"></script>
+<script src="lib/mobikon/models/emenu/menu_type.js"></script>
+<script src="lib/mobikon/models/emenu/order.js"></script>
+<script src="lib/mobikon/models/emenu/order-item.js"></script>
+<script src="lib/mobikon/models/emenu/server.js"></script>
+<script src="lib/mobikon/models/emenu/special-instruction.js"></script>
+<script src="lib/mobikon/models/emenu/table.js"></script>
+<script src="lib/mobikon/models/model.js"></script>
+<script src="lib/mobikon/models/model-utils.js"></script>
+
+
+<script src="lib/mobikon/directives/module.js"></script>
+<script src="lib/mobikon/directives/state-class.js"></script>
+<script src="lib/mobikon/directives/header.js"></script>
+<script src="lib/mobikon/directives/error-src.js"></script>
+<script src="lib/mobikon/directives/grid/grid.js"></script>
+<script src="lib/mobikon/directives/grid/grid-filter.js"></script>
+<script src="lib/mobikon/directives/date-model.js"></script>
+<script src="lib/mobikon/directives/status/status.js"></script>
+<script src="lib/mobikon/directives/vertical-center.js"></script>
+<script src="lib/mobikon/directives/model-view/model-view.js"></script>
+<script src="lib/mobikon/directives/in-place-edit/in-place-edit.js"></script>
+<script src="lib/mobikon/directives/load/load.js"></script>
+
+<script src="services/services.js"></script>
+<script src="services/invoice.js"></script>
+<script src="directives/directives.js"></script>
+<script src="app.js"></script>
+<script src="views/main/main.js"></script>
+<script src="views/order/menu/menu.js"></script>
+<script src="views/order/menu/category/category.js"></script>
+<script src="views/order/menu/category/sub_category/sub_category.js"></script>
+<script src="views/order/item/item.js"></script>
+<script src="views/servers/servers.js"></script>
+<script src="views/server/server.js"></script>
+<script src="views/password/password.js"></script>
+<script src="views/order/order.js"></script>
+<script src="views/order/order_list.js"></script>
+<script src="views/order/customer_details/customer_details.js"></script>
+<script src="views/order/menu/menu.js"></script>
+<script src="views/order/summary/summary.js"></script>
+<script src="views/order/customize/customize.js"></script>
+<script src="views/order/sales_order/sales_order.js"></script>
+<script src="views/order/confirm_order/confirm_order.js"></script>
+<script src="views/order/quote_order/quote_order.js"></script>
+<script src="services/static_data.js"></script>
+<!-- endbuild -->
+</body>
+</html>

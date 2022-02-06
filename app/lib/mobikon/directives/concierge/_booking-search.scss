@@ -1,0 +1,67 @@
+.mk-booking-search {
+  .search {
+    @include clearfix;
+    background: white;
+    margin: 6px 0;
+    padding: 6px;
+    border: 1px solid $border-color;
+
+    i {
+      float: right;
+    }
+  }
+
+  .results {
+    @include clearfix;
+    white-space: nowrap;
+    background: white;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    padding: 0.7rem $page-padding;
+    margin: 0.5rem 0;
+    overflow-x: scroll;
+
+    .error {
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+
+    .results-inner {
+      $height: 30px;
+      height: $height;
+      line-height: $height;
+
+      ul {
+        height: 100%;
+        li {
+          height: 100%;
+          display: inline-block;
+          margin-right: -0.3em; // remove white space between inline-blocks
+          a {
+            height: 100%;
+            display: block;
+            margin-right: 1rem;
+            padding: 0 0.5em;
+            color: $highlight-color;
+            border: 1px solid $highlight-color;
+            border-radius: 0.2em;
+            line-height: $height - 2; // -2 for border
+          }
+
+          &.last div {
+            margin-right: $page-padding;
+          }
+        }
+      }
+
+      .searching {
+        text-align: center;
+      }
+
+    }
+
+
+  }
+}

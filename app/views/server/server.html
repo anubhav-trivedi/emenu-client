@@ -1,0 +1,45 @@
+<mk-header>
+    <left><a ng-click="mk.nav.goBack()" class="btn btn-danger btn-logout">Logout</a></left>
+</mk-header>
+
+
+<div class="container">
+    <div class="profile-row row">
+        <div class="col-xs-9">
+            <img class="profile-img img-circle" ng-src="{{server.Image}}" mk-error-src="assets/images/defaultServer.png">
+            <h2 class="profile-name">{{server.Name}}</h2>
+        </div>
+        <div class="col-xs-3 text-right">
+            <button ng-click='createOrder()' class="btn btn-lg btn-primary">Create Order</button>
+        </div>
+    </div>
+
+    <div class="row details">
+        <div class="col-xs-3">
+            <label>From <input mk-date-model="dateRange.from" type="date"></label>
+        </div>
+        <div class="col-xs-3">
+            <label>To <input mk-date-model="dateRange.to" type="date"></label>
+        </div>
+
+        <div class="col-xs-3">
+            <span class="detail">Total Paid: </span>
+            <span>{{paid | currency}}</span>
+        </div>
+
+        <div class="col-xs-3">
+            <span class="detail">Total Ordered: </span>
+            <span>{{total | currency}}</span>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div mk-grid="orderOptions"></div>
+
+        </div>
+    </div>
+
+</div>

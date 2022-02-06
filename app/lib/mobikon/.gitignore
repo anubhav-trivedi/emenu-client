@@ -1,0 +1,9 @@
+node_modules
+dist
+.tmp
+.sass-cache
+*.log
+
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/*
